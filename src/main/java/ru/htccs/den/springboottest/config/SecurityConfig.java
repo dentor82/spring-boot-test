@@ -1,4 +1,4 @@
-package ru.htccs.den.springboottest;
+package ru.htccs.den.springboottest.config;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
