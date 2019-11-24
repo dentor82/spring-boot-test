@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Контроллер для сопоставления, страница по умолчанию для ввода логина и пароля
+ */
 @Controller
 public class MainController {
 
@@ -20,7 +23,6 @@ public class MainController {
     @RequestMapping(value={ "/login" }, method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView retValue = new ModelAndView();
-        //retValue.setViewName("Login");
         return retValue;
     }
 

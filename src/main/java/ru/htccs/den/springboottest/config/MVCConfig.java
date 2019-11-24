@@ -4,6 +4,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * Конфигурирование приложения с помошью сопоставления путей с отображением
+ */
 @Configuration
 public class MVCConfig implements WebMvcConfigurer {
     @Override

@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import ru.htccs.den.springboottest.models.User;
 
 @Repository
-public interface ILogin extends CrudRepository<User, Long> {
+public interface ILoginRepository extends CrudRepository<User, Long> {
     User findByUserName(String inLogin);
 }

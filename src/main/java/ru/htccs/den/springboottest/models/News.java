@@ -8,10 +8,11 @@ import java.util.Date;
 /**
  * Объект новость
  */
+
 @Data
 @Entity
 @Table(name = "list_news")
-public class News implements IViewNews {
+public class News {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long Id;
@@ -24,24 +25,4 @@ public class News implements IViewNews {
 
     @Column(name = "text_news")
     private String text;
-
-    @Override
-    public long getId() {
-        return this.Id;
-    }
-
-    @Override
-    public Date getCreateDate() {
-        return this.createDate;
-    }
-
-    @Override
-    public String getTitle() {
-        return this.title;
-    }
-
-    @Override
-    public String getText() {
-        return this.text;
-    }
 }

@@ -5,10 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-    <div>
-        <ul>
-        <li th:each="elem : ${news}" th:text="${elem.getTitle()}"></li>
-        </ul>
+    <div th:each="elem : ${news}">
+        <h1 th:text="${elem.getTitle()}" />
+        <span style="font-size:5px" th:text="${elem.getCreateDate()}" />
+        <div th:text="${elem.getText()}" />
     </div>
 </body>
 </html>

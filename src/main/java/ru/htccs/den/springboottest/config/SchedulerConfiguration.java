@@ -8,9 +8,17 @@ import reactor.core.scheduler.Schedulers;
 
 import java.util.concurrent.Executors;
 
+/**
+ * Шедулер для асинхронного чтения новостей из БД на h2
+ */
 @Configuration
 public class SchedulerConfiguration {
     private final Integer connectionPoolSize;
+
+    /**
+     * Конструктор объекта
+     * @param connectionPoolSize размер пула
+     */
     public SchedulerConfiguration(@Value("${spring.datasource.maximum-pool-size}") Integer connectionPoolSize) {
         this.connectionPoolSize = connectionPoolSize;
     }

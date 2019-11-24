@@ -8,12 +8,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.htccs.den.springboottest.repository.ILogin;
-import ru.htccs.den.springboottest.repository.UserDetailsServiceImpl;
+import ru.htccs.den.springboottest.repository.ILoginRepository;
+import ru.htccs.den.springboottest.service.impl.UserDetailsServiceImpl;
 
+/**
+ * Конфигурирование приложения с подключением к web security
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -47,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public UserDetailsService userDetailsService(ILogin inUser) {
+    public UserDetailsService userDetailsService(ILoginRepository inUser) {
         return new UserDetailsServiceImpl(inUser);
     }
 

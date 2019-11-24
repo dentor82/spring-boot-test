@@ -11,6 +11,9 @@ import ru.htccs.den.springboottest.models.News;
 import ru.htccs.den.springboottest.repository.INewsRepository;
 import ru.htccs.den.springboottest.service.NewsService;
 
+/**
+ * Контроллер для вывода новостей
+ */
 @Controller
 @RequestMapping("/news")
 public class NewsController {
