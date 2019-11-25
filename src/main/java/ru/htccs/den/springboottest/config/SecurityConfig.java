@@ -38,10 +38,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");*/
         http
                 .authorizeRequests()
-                .antMatchers("/", "/welcome").permitAll()
+                .antMatchers("/", "/h2/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
+                .formLogin().defaultSuccessUrl("/welcome")
                 .permitAll()
                 .and()
                 .logout()

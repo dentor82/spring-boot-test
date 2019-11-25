@@ -1,5 +1,7 @@
 package ru.htccs.den.springboottest.controllers;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +15,15 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
-    /*@RequestMapping(value = { "/welcome" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/welcome" }, method = RequestMethod.GET)
     public ModelAndView welcomePage(Model model) {
         ModelAndView retValue = new ModelAndView();
-        //retValue.setViewName("welcomePage");
+
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        retValue.setViewName("welcomePage");
+        retValue.addObject("messageHellow", "Здравствуйте, " + loggedInUser.getName() + "!");
         return retValue;
-    }*/
+    }
 
     @RequestMapping(value={ "/login" }, method = RequestMethod.GET)
     public ModelAndView login(){
