@@ -25,20 +25,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        // Страницы не требующие ввода логина и пароля
-        /*http.authorizeRequests().antMatchers("/", "/welcome", "/login", "/logout").permitAll()
-                .anyRequest().authenticated()
-                .and().formLogin()
-                //.loginPage("/login")
-                .defaultSuccessUrl("/main")
-                .failureUrl("/login?error=true")
-
-                // Config for Logout Page
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");*/
         http
                 .authorizeRequests()
-                .antMatchers("/", "/h2/**").permitAll()
+                .antMatchers("/").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().defaultSuccessUrl("/welcome")

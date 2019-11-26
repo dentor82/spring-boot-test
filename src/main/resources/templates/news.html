@@ -3,18 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        function show()
+        {
+            $.ajax({
+                url: "/newsData",
+                cache: false,
+                success: function(html){
+                    $("#newsBlock").html(html);
+                }
+            });
+        }
+
+        $(document).ready(function(){
+            show();
+            setInterval('show()',10000);
+        });
+    </script>
 </head>
 <body>
-    <div th:each="elem : ${news}">
-        <h1 th:text="${elem.getTitle()}" />
-        <span style="font-size:8px" th:text="${elem.getCreateDate()}" />
-        <div th:text="${elem.getText()}" />
-    </div>
-    <div id="embeddedFlow">
-        <a id="startFlow" href="embedded-flow">Start Embedded Flow</a>
-        <script type="text/javascript">
-				Spring.addDecoration(new Spring.AjaxEventDecoration({elementId:"startFlow",event:"onclick",params:{fragments:"body",mode:"embedded"}}));
-			</script>
+    <div id="newsBlock">
+
     </div>
 </body>
 </html>
