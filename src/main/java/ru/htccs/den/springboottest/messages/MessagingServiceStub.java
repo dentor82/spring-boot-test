@@ -3,6 +3,7 @@ package ru.htccs.den.springboottest.messages;
 import org.apache.activemq.command.MessageId;
 import org.springframework.messaging.Message;
 
+import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
@@ -10,7 +11,7 @@ public class MessagingServiceStub extends AbstractStub implements MessagingServi
 
     @Override
     public <T> MessageId send(Message<T> msg) {
-        return new MessageId(UUID.randomUUID().toString());
+        return new MessageId("id:" + new Random().nextInt(1000));
     }
 
     @Override

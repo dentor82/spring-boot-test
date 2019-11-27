@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Объект новость
+ * Объект новость, аннотации для data-jpa
  */
 
 @Data

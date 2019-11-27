@@ -25,9 +25,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/").permitAll()
+        http    // Без аутентификации
+                .authorizeRequests().antMatchers("/").permitAll()
+                // Все только после аутентификации
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().defaultSuccessUrl("/welcome")
@@ -44,15 +44,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        //return new BCryptPasswordEncoder();
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
+    /**
+     * Настроим универсальное хранение паролей "{тип шифрования} пароль"
+     */
     @Bean
     public DaoAuthenticationProvider authProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(passwordEncoder());
-        return authProvider;
+        DaoAuthenticationProvider retValue = new DaoAuthenticationProvider();
+        retValue.setUserDetailsService(userDetailsService);
+        retValue.setPasswordEncoder(passwordEncoder());
+        return retValue;
     }
 }

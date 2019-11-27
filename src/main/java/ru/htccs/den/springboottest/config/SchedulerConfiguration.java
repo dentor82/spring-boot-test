@@ -22,6 +22,7 @@ public class SchedulerConfiguration {
     public SchedulerConfiguration(@Value("${spring.datasource.maximum-pool-size}") Integer connectionPoolSize) {
         this.connectionPoolSize = connectionPoolSize;
     }
+
     @Bean
     public Scheduler jdbcScheduler() {
         return Schedulers.fromExecutor(Executors.newFixedThreadPool(connectionPoolSize));

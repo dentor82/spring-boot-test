@@ -21,7 +21,10 @@ public class MainController {
 
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         retValue.setViewName("welcomePage");
-        retValue.addObject("messageHellow", "Здравствуйте, " + loggedInUser.getName() + "!");
+        String nameUser = "Не авторизован";
+        if (loggedInUser != null)
+            nameUser = loggedInUser.getName();
+        retValue.addObject("messageHellow", "Здравствуйте, " + nameUser + "!");
         return retValue;
     }
 
